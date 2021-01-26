@@ -1,0 +1,98 @@
+.ShoppingCartHeader, .ProductOrder {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    gap: 0 0;
+    list-style: none;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+}
+.ShoppingCartHeader, h3{
+    font-family: 'Montserrat', sans-serif;
+}
+.TotalPrice{
+    text-align: right;
+    padding-right: 25px;
+    font-family: 'Montserrat', sans-serif;
+}
+.Label{
+    font-family: 'Montserrat', sans-serif;
+}
+.PromoCode:hover > .Input{
+    border-color: #f58551;
+}
+.PromoCode:hover > .AnimatedButton{
+    border-color: #f58551;
+    background-color: #f58551;
+}
+.AnimatedButton {
+    background-color: #16cc9b;
+    border: 2px solid #16cc9b;
+    color: #ffffff;
+    transition: all 0.25s linear;
+    cursor: pointer;
+    border-radius: 0 2rem 2rem 0;
+    padding: 0.5rem 0;
+    width: 30px;
+}
+
+.AnimatedButton::after {
+    position: relative;
+    right: 0;
+    content: " \276f";
+    transition: all 0.15s linear;
+}
+
+.AnimatedButton:hover {
+    background-color: #f58551;
+    border-color: #f58551;
+}
+
+.AnimatedButton:hover::after {
+    right: -5px;
+}
+
+.AnimatedButton:focus {
+    outline: none;
+}
+.Input {
+    outline: none;
+    border: 2px solid #16cc9b;
+    border-radius: 2rem 0 0 2rem;
+    padding: 0.5rem 0 0.5rem 1.8rem;
+    transition: all 0.25s linear;
+}
+.Input[type=number]::-webkit-inner-spin-button,
+.Input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.GridFooter{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    gap: 0 0;
+}
+.ButtonsBox{
+    display: flex;
+    justify-content: center;
+}
+.ButtonsBox > .ButtonBox{
+    background-color: #16cc9b;
+    border: 2px solid #16cc9b;
+    color: #ffffff;
+    transition: all 0.25s linear;
+    cursor: pointer;
+    border-radius: 1.5rem;
+    padding: 0.2rem 0;
+    width: 80%;
+}
+.ButtonsBox > .ButtonBox:hover{
+    background-color: #f58551;
+    border-color: #f58551;
+    outline: none;
+}

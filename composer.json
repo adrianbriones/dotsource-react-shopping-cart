@@ -1,0 +1,14 @@
+{
+  "name": "vendor_name/dotsource-react-productlist",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "adrianbriones",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  }
+}
