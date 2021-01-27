@@ -32,31 +32,27 @@ class Store extends Component {
         sum: 0,
         cart: [],
         priceDiscount: false,
-        newTotalPrice: 0
     }
-    // getSnapshotBeforeUpdate(prevProps, prevState){
-    //     console.log(prevState)
-    //
-    // }
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     console.log(prevState)
-    //     //console.log(prevProps)
-    // }
 
     purchaseHandler = () => { this.setState({purchasing: true}); }
-    purchaseCancelHandler = () => { this.setState({purchasing: false, priceDiscount:false}); }
+    purchaseCancelHandler = () => {
+        if(this.state.priceDiscount){
+            this.setState({totalPrice:this.state.totalPriceLast})
+        }
+        this.setState({
+            purchasing: false,
+            priceDiscount:false,
+            totalPriceLast: 0
+        });
+    }
     purchaseContinueHandler = () => { alert('Sending data...');}
     updatePurchaseState = totalItems => { this.props.passData(totalItems);}
 
     totalPriceChangeHandler = discount => {
 
         const actualPrice = this.state.totalPrice;
-
         const PriceDiscount = (actualPrice * discount);
         const newPrice = (actualPrice - PriceDiscount);
-        // this.setState(prevState => ({
-        //         return {...prevState, newPrice}
-        // }))
 
         this.setState({totalPrice: newPrice, priceDiscount: true, totalPriceLast: actualPrice})
        this.state.priceDiscount ? this.setState({totalPrice: actualPrice}) : null
