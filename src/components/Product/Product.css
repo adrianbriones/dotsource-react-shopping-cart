@@ -19,8 +19,8 @@
   padding: 10px;
     min-height: 42px;
 }
-.CardTitle p{
-    font-size: 14px;
+.Price{
+    font-size: 16px;
     text-align: center;
 }
 
@@ -28,6 +28,27 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.Button{
+    background-color: #16cc9b;
+    border: 2px solid #16cc9b;
+    color: #ffffff;
+    transition: all 0.25s linear;
+    cursor: pointer;
+    border-radius: 1.5rem;
+    padding: 0.2rem 0;
+    width: 80%;
+    margin-left: 10px;
+}
+
+.Button:hover, .Button:active{
+    background-color: #f58551;
+    border-color: #f58551;
+    outline: none;
+}
+.Button:focus{
+    outline: none;
 }
 
 @media (min-width: 500px) {

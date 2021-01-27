@@ -9,10 +9,10 @@ const toolbar = ( props ) => (
     <header className={classes.Toolbar}>
         <DrawerToggle clicked={props.drawerToggleClicked} />
         <div className={classes.Logo}>
-            <Logo />
+            <Logo className={classes.DesktopOnly}/>
         </div>
-        <nav className={classes.DesktopOnly}>
-            <NavigationItems />
+        <nav>
+            <NavigationItems className={classes.DesktopOnly}/>
         </nav>
     </header>
 );

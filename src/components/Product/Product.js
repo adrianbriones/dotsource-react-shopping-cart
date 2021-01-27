@@ -3,23 +3,22 @@ import React from 'react';
 import classes from './Product.css';
 import button from '../UI/Button/Button';
 
-const product = (props)=> (
+const product = props => (
         <div className={classes.ProductBox}>
-            <figure className={classes.Card}>
+            <div className={classes.Card}>
                 <div className={classes.ImgWrap}>
                     <img src={props.image} alt={props.name}/>
                 </div>
-                <figcaption>
+                <div>
                     <p className={classes.CardTitle}>{props.name}</p>
-                </figcaption>
-                <div className={classes.CardBottom}>
-                    <div>
-                        <div className="price-new">{props.price.toFixed(2)}€</div>
-                    </div>
-                    <button onClick={props.onIncrementProduct}>+</button>
-                    <button onClick={props.onRemoveProduct}>-</button>
+                    <p className={classes.Price}>{props.price.toFixed(2)}€</p>
                 </div>
-            </figure>
+                <div className={classes.CardBottom}>
+                    <button className={classes.Button} onClick={props.onIncrementProduct}>+</button>
+                    <button className={classes.Button} onClick={props.clicked}>BUY</button>
+                    <button className={classes.Button} onClick={props.onRemoveProduct}>-</button>
+                </div>
+            </div>
         </div>
     );
 

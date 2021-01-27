@@ -14,7 +14,7 @@ h2 {
     margin-bottom: 0;
 }
 
-@media (min-width: 500px) {
+@media all and (min-width: 500px) {
     .Productlist {
         grid-template-columns:repeat(1, 1fr);
         gap: 10px 10px;
@@ -23,12 +23,12 @@ h2 {
         font-size: 40px;
     }
 }
-@media (min-width: 700px) {
+@media all and (min-width: 700px) {
     .Productlist {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-@media (min-width: 1000px) {
+@media all and (min-width: 992px) {
     .Productlist {
         grid-template-columns: repeat(4, 1fr);
         margin: auto;

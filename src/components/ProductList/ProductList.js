@@ -13,6 +13,7 @@ const ProductList = (props) => (
                     name={p.name}
                     price={p.price}
                     qty={p.qty}
+                    clicked={props.onShowCart}
                     onIncrementProduct={() => props.onIncrementProduct(p.id)}
                     onRemoveProduct={() => props.onRemoveProduct(p.id)}
                 />

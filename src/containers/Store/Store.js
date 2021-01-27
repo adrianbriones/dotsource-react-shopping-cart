@@ -1,17 +1,18 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 
-import product1 from '../../assets/images/product/product01.jpeg'
-import product2 from '../../assets/images/product/product02.jpeg'
-import product3 from '../../assets/images/product/product03.jpeg'
-import product4 from '../../assets/images/product/product04.jpeg'
-import product5 from '../../assets/images/product/product05.jpeg'
-import product6 from '../../assets/images/product/product06.jpeg'
-import product7 from '../../assets/images/product/product07.jpeg'
-import product8 from '../../assets/images/product/product08.jpeg'
+import product1 from '../../assets/images/product/product01.jpeg';
+import product2 from '../../assets/images/product/product02.jpeg';
+import product3 from '../../assets/images/product/product03.jpeg';
+import product4 from '../../assets/images/product/product04.jpeg';
+import product5 from '../../assets/images/product/product05.jpeg';
+import product6 from '../../assets/images/product/product06.jpeg';
+import product7 from '../../assets/images/product/product07.jpeg';
+import product8 from '../../assets/images/product/product08.jpeg';
+
 import Aux from '../../hoc/Aux/Aux';
-import Modal from '../../components/UI/Modal/Modal'
+import Modal from '../../components/UI/Modal/Modal';
 import ProductList from "../../components/ProductList/ProductList";
-import ShoppingCart from "../../components/ShoppingCart/ShoppingCart";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 class Store extends Component {
     state = {
@@ -27,28 +28,40 @@ class Store extends Component {
         ],
         purchasing: false,
         totalPrice: 0,
+        totalPriceLast: 0,
         sum: 0,
         cart: [],
-
+        priceDiscount: false,
+        newTotalPrice: 0
     }
+    // getSnapshotBeforeUpdate(prevProps, prevState){
+    //     console.log(prevState)
+    //
+    // }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     console.log(prevState)
+    //     //console.log(prevProps)
+    // }
 
-    purchaseHandler = () => {
-        this.setState({purchasing: true});
+    purchaseHandler = () => { this.setState({purchasing: true}); }
+    purchaseCancelHandler = () => { this.setState({purchasing: false, priceDiscount:false}); }
+    purchaseContinueHandler = () => { alert('Sending data...');}
+    updatePurchaseState = totalItems => { this.props.passData(totalItems);}
 
-    }
-    purchaseCancelHandler = () => {
-        this.setState({purchasing: false});
-    }
+    totalPriceChangeHandler = discount => {
 
-    purchaseContinueHandler = () => {
-        alert('Sending data...');
-    }
+        const actualPrice = this.state.totalPrice;
 
-    updatePurchaseState = (totalItems) => {
-        this.props.passData(totalItems);
-    }
+        const PriceDiscount = (actualPrice * discount);
+        const newPrice = (actualPrice - PriceDiscount);
+        // this.setState(prevState => ({
+        //         return {...prevState, newPrice}
+        // }))
 
-    removeProductHandler = (productId) => {
+        this.setState({totalPrice: newPrice, priceDiscount: true, totalPriceLast: actualPrice})
+       this.state.priceDiscount ? this.setState({totalPrice: actualPrice}) : null
+    };
+    removeProductHandler = productId => {
         const oldSum = this.state.sum
         const oldCount = this.state.products[productId].qty;
         if (oldCount <= 0) {
@@ -71,7 +84,7 @@ class Store extends Component {
         this.updatePurchaseState(updatedSumProducts);
     }
 
-    addProductHandler = (productId) => {
+    addProductHandler = productId => {
         const oldSum = this.state.sum;
         const oldCount = this.state.products[productId].qty;
         const updatedCount = oldCount + 1;
@@ -90,27 +103,18 @@ class Store extends Component {
         });
         this.updatePurchaseState(updatedSumProducts);
     }
-    totalPriceChangeHandler = (discount) => {
-        const actualPrice = this.state.totalPrice;
-        const PriceDiscount = (actualPrice * discount).toFixed(2);
-        const newPrice = (actualPrice - PriceDiscount).toFixed(2);
-        //this.setState({totalPrice: newPrice});
-        console.log("[totalPriceChangeHandler]: New Price " + newPrice)
 
-    };
 
     render() {
         return (
             <Aux>
                 <h2>Product Overview</h2>
-                <div style={{width: "100%", display: "flex", flexFlow: "row-reverse"}}>
-                    <button style={{marginRight: "100px"}} onClick={this.purchaseHandler}>ORDER</button>
-                </div>
                 <ProductList
                     products={this.state.products}
                     onSaveProduct={this.purchaseHandler}
                     onIncrementProduct={this.addProductHandler}
                     onRemoveProduct={this.removeProductHandler}
+                    onShowCart={this.purchaseHandler}
                 />
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
                     <ShoppingCart

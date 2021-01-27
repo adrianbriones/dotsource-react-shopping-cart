@@ -7,13 +7,12 @@ import SumContext from '../../context/Sum-context';
 
 const navigationItems = () => (
     <ul className={classes.NavigationItems}>
-        <NavigationItem link="/" active>Productlist</NavigationItem>
         <NavigationItem link="/">
-            <img src={cartIcon} alt="cart"/>
+            <img style={{maxWidth:"30px"}} src={cartIcon} alt="cart"/>
            <span>
                <SumContext.Consumer>
-               {(context) => context.sumItems}
-            </SumContext.Consumer>
+                     {(context) => context.sumItems}
+               </SumContext.Consumer>
            </span>
         </NavigationItem>
     </ul>
