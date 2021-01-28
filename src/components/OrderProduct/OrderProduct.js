@@ -5,7 +5,7 @@ import classes from "./OrderProduct.css";
 
 const orderProduct = props => (
             <Aux key={props.id}>
-                <ul className={classes.ProductOrder} onClick={props.onRemoveProduct}>
+                <ul className={classes.ProductOrder}>
                     <li><img style={{maxWidth: "50px"}} src={props.image} alt={props.name}/></li>
                     <li>{props.name}</li>
                     <li>{props.price.toFixed(2)}€</li>
