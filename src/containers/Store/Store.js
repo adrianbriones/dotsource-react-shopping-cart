@@ -116,6 +116,7 @@ class Store extends Component {
                     <ShoppingCart
                         items={this.state.cart}
                         price={this.state.totalPrice}
+                        priceDiscount={this.state.priceDiscount}
                         purchaseCancelled={this.purchaseCancelHandler}
                         purchaseContinued={this.purchaseContinueHandler}
                         totalPriceChangeHandler={this.totalPriceChangeHandler}/>
