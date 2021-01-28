@@ -18,7 +18,9 @@ class ShoppingCart extends Component {
         const userInputCode = this.state.inputText;
         for (let i = 0; i < promotions.length; i++) {
             if (userInputCode === promotions[i].code) {
-                this.props.totalPriceChangeHandler(promotions[i].discount);
+                if(!this.props.priceDiscount){
+                    this.props.totalPriceChangeHandler(promotions[i].discount);
+                }
                 return
             }
         }
