@@ -37,6 +37,7 @@ class ShoppingCart extends Component {
                             price={pKey.price}
                             qty={pKey.qty}
                             image={pKey.image}
+                            onRemoveProduct={() => this.props.onRemoveProduct(pKey.id)}
                         />
                     )
                 } else {

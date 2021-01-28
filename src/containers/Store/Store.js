@@ -119,7 +119,8 @@ class Store extends Component {
                         priceDiscount={this.state.priceDiscount}
                         purchaseCancelled={this.purchaseCancelHandler}
                         purchaseContinued={this.purchaseContinueHandler}
-                        totalPriceChangeHandler={this.totalPriceChangeHandler}/>
+                        totalPriceChangeHandler={this.totalPriceChangeHandler}
+                        onRemoveProduct={this.removeProductHandler}/>
                 </Modal>
             </Aux>
         );
